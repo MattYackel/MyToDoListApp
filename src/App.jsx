@@ -18,10 +18,19 @@ function App() {
     'Study',
   ]);
 
+  const handleAdd = newTask => {
+    // If task not in list, add it
+    if (!tasks.includes(newTask)) {
+      setTasks([...tasks, newTask]);
+    } else {
+      alert(`Task "${newTask}" already exists.`);
+    }
+  };
+
   return (
     <SafeAreaView>
       <ToDoList tasks={tasks} />
-      <ToDoForm />
+      <ToDoForm onAdd={handleAdd} />
     </SafeAreaView>
   );
 }
